@@ -1,26 +1,86 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #020413;
+    --background-accent: #291146;
+    --foreground: #f9fafb;
+    --primary: #06b6d4;
+    --secondary: #8b5cf6;
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #020413;
+  /* Dual color combination background: #020413 (deep space midnight) & #291146 (royal nebula purple) */
+  background-image: 
+    radial-gradient(ellipse 90% 70% at 50% -15%, rgba(41, 17, 70, 0.85), transparent 75%),
+    radial-gradient(ellipse 70% 60% at 100% 45%, rgba(41, 17, 70, 0.45), transparent 70%),
+    radial-gradient(ellipse 80% 50% at 0% 85%, rgba(41, 17, 70, 0.55), transparent 70%),
+    radial-gradient(circle at 50% 50%, #020413 0%, #020413 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #f3f4f6;
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #020413;
+}
+::-webkit-scrollbar-thumb {
+  background: #291146;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b1965;
+}
+
+/* Glassmorphism utility with #020413 / #291146 aesthetic */
+.glass {
+  background: rgba(41, 17, 70, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(41, 17, 70, 0.35) 0%, rgba(2, 4, 19, 0.6) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 10px 35px -10px rgba(139, 92, 246, 0.3);
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, #38bdf8 0%, #a855f7 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Background animated glow mesh */
+.glow-mesh {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(100px);
+  pointer-events: none;
 }
